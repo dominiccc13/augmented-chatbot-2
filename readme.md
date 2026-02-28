@@ -5,9 +5,7 @@ A RAG-powered (Retrieval-Augmented Generation) chatbot and portfolio API built w
 ## Technical Highlights
 
 - **RAG Implementation:** Uses `sentence-transformers` (`all-MiniLM-L6-v2`) to vectorize a custom knowledge base (`me.json`). It performs a cosine similarity search to retrieve the most relevant context before generating a response with OpenAI.
-- **Custom Rate Limiting:** Implements a rolling hourly window rate-limiter based on client IP addresses to manage API costs and prevent abuse.
 - **Production-Ready API:** Built with FastAPI, featuring asynchronous endpoints, CORS middleware for frontend integration, and structured error handling.
-- **Automated SMTP Integration:** A secure email endpoint for direct contact, featuring IP-based spam protection.
 
 ## Tech Stack
 
