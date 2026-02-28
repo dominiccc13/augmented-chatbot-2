@@ -28,6 +28,3 @@ A RAG-powered (Retrieval-Augmented Generation) chatbot and portfolio API built w
 ## Security & Reliability
 
 - **Environment Isolation:** Sensitive API keys and SMTP credentials are managed via `.env`.
-- **Global & Local Rate Limits:** - Global: Maximum 20 unique visitors per hour.
-  - Local: Maximum 50 prompts/3 emails per IP per hour.
-- **Graceful Error Handling:** Implements standard HTTP 429 (Too Many Requests) and 500 (Server Error) status codes to ensure frontend resilience.
