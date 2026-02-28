@@ -43,13 +43,6 @@ def retrieve_response(prompt):
 # 
 
 app = FastAPI()
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["http://127.0.0.1:5500"],
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"]
-# )
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
@@ -61,9 +54,6 @@ class ChatRequest(BaseModel):
 def prompt(chatRequest: ChatRequest):
     prompt = chatRequest.prompt
     history = chatRequest.history
-
-    print("endpoint hit")
-    print(prompt)
 
     my_prompt, my_response = retrieve_response(prompt)
     system_message = {
