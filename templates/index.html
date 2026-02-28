@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominic Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div id="app">
+        <aside id="sidebar">
+            <input type="checkbox" id="sidebar-toggle">
+            <label for="sidebar-toggle" id="toggle-button">&lt;</label>
+            <div class="sidebar-content">
+                <h1 class="subtitle">About Me</h1>
+                <p>I’m a computer science student with experience in full-stack engineering, software development, and AI/ML implementation. My work spans full-stack application design, LLM AI systems, and creative C# desktop apps and automation projects that solve everyday problems.</p>
+                <h1 class="subtitle">Projects</h1>
+                <div class="project">
+                    <h4>Fullstack Secure Password Manager</h4>
+                    <p>Built a fullstack password manager web app using Flask and CryptoJS.</p>
+                </div>
+                <div class="project">
+                    <h4>Real-Time CV-to-Game Control Pipeline</h4>
+                    <p>Real-time obstacle game with Pygame and MediaPipe hand-tracking to detect gestures to control movement.</p>
+                </div>
+                <div class="project">
+                    <h4>Retrieval-Augmented Personal AI Chatbot</h4>
+                    <p>Architected a RAG pipeline using sentence-transformers to vectorize a curated dataset of Q&A pairs, enabling grounding for an AI assistant.</p>
+                </div>
+            </div>
+        </aside>
+        <div id="chatbot">
+            <div id="conversation">
+                <div id="header">
+                    <div id="left">
+                        <h1>Dominic Stefani's Chatbot</h1>
+                    </div>
+                    <div id="right">
+                        <a href="/">Home</a>
+                        <a href="/resume">Resume</a>
+                        <a href="https://www.linkedin.com/in/dominic-stefani-723290387/" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <div id="messages">
+                    <div class="bot-message">Hi there! What would you like to know?</div>
+                </div>
+            </div>
+            <div id="input-container">
+                <h3>You can ask interview or get-to-know-you questions.</h3>
+                <div id="input">
+                    <input id="chat-input" type="text" placeholder="Ask anything about me">
+                    <button id="chat-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

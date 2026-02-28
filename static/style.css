@@ -1,0 +1,173 @@
+/* ---------- GENERAL ---------- */
+html, body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    height: 100%;
+    margin: 0;
+    color: #2c3e50;
+}
+
+h1 {
+    color: #1e272e;
+}
+
+#app {
+    display: flex;
+    gap: 10px;
+}
+
+/* ---------- HEADER ---------- */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+#header a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ---------- BODY ---------- */
+#chatbot {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#conversation {
+    flex: 1;
+    overflow-y: auto;
+}
+
+#messages {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 25px;
+    overflow-y: auto;
+    max-height: 79%;
+    height: 79%;
+    background-color: #eee;
+    box-shadow: 5px 10px 10px rgba(0,0,0,0.1);
+}
+
+#messages .user-message {
+    justify-self: right;
+    background-color: #ccc;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 5px 10px;
+    max-width: 45%;
+    color: #1e272e;
+    margin: 10px 0;
+}
+
+#messages .bot-message {
+    justify-self: left;
+    max-width: 100%;
+    padding: 5px 10px;
+    background-color: #1e272e;
+    border-radius: 20px;
+    color: white;
+}
+
+/* ---------- CHAT INPUT ---------- */
+#input-container h3 {
+    text-align: center;
+    padding: 25px;
+}
+
+#input {
+    margin: 10px auto;  
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* gives a modern pill shape */
+    padding: 5px 15px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    }
+
+#input input {
+    flex-grow: 1; 
+    border: none;
+    outline: none; /* Removes the blue ring when clicking */
+    padding: 10px;
+    font-size: 16px;
+}
+
+#input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#input button:hover {
+    background-color: #0056b3;
+}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar {
+    position: relative;
+    border-left: none;
+    border-right: 1px solid #eee;
+    background-color: #eee;
+    width: 18%;
+    transition: width 0.3s ease;
+    z-index: 1000;
+}
+
+#sidebar-toggle {
+    display: none;
+}
+
+#toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 0 5px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 20px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#sidebar-toggle:checked ~ .sidebar-content {
+    display: none;
+    right: -35px;
+}
+
+#sidebar-toggle:checked + #toggle-button {
+    transform: rotate(180deg);
+}
+
+#sidebar-toggle:checked ~ #sidebar, 
+#sidebar:has(#sidebar-toggle:checked) {
+    width: 3%;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#sidebar .subtitle {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}

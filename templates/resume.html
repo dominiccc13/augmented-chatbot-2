@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/static/style_resume.css">
+<div id="resume">
+    <div id="header">
+        <div id="left">
+            <h1>Dominic Stefani's Resume</h1>
+        </div>
+        <div id="right">
+            <a href="/">Home</a>
+            <a href="/resume">Resume</a>
+            <a href="https://www.linkedin.com/in/dominic-stefani-723290387/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+    <div id="projects" class="container">
+        <h2>Projects</h2>
+        <strong>Retrieval-Augmented Personal AI Chatbot (FastAPI + Sentence Transformers)</strong>
+        <a href="/">Try it here</a>
+        <ul>
+            <li>Architected a RAG (Retrieval-Augmented Generation) pipeline using sentence-transformers to vectorize a curated dataset of professional and technical Q&A pairs, enabling grounding for an AI assistant</li>
+            <li>Engineered a semantic retrieval engine utilizing scikit-learn cosine similarity to perform real-time vector searches against precomputed embeddings for high-accuracy context injection</li>
+            <li>Optimized LLM performance by injecting retrieved context into OpenAI prompt templates, ensuring responses remained factually grounded in personal experience while mitigating hallucinations</li>    
+            <li>Developed a resilient FastAPI backend featuring asynchronous request handling, CORS configuration, and custom IP-based rate limiting to manage API costs and prevent automated abuse</li>
+            <li>Built a responsive vanilla JavaScript frontend with custom error handling for HTTP 429 (Rate Limit) and 500 status codes, providing a seamless, chat-like user experience</li>
+        </ul>
+        <strong>Real-Time CV-to-Game Control Pipeline (MediaPipe + UDP + Pygame)</strong>
+        <a href="https://github.com/dominiccc13/cv_pygame" target="_blank">See on Github</a>
+        <ul>
+            <li>Developed a real-time obstacle-avoidance game using Python and Pygame, controlled entirely through hand gestures instead of a keyboard</li>
+            <li>Implemented MediaPipe hand-tracking to detect open/closed hands, relative hand height, and directional gestures for player movement</li>
+            <li>Built a UDP socket communication layer to stream gesture commands from the computer-vision module to the game loop with minimal latency</li>    
+            <li>Designed a responsive gesture-mapping system supporting walking, sprinting, strafing, and directional control through intuitive hand motions</li>    
+            <li>Engineered the overall architecture as two decoupled processes (vision + game), enabling modularity, smooth performance, and real-time interaction</li>    
+        </ul>
+        <strong>Full-Stack Secure Password Manager</strong>
+        <a href="https://github.com/dominiccc13/local_pwm" target="_blank">See on Github</a>
+        <ul>
+            <li>Designed and developed a full-stack password manager with a Flask backend and a responsive front-end using modern HTML, CSS, and vanilla JavaScript, integrating CryptoJS for client-side cryptography</li>
+            <li>Architected a relational SQLite database with multiple tables to efficiently store user and password metadata while maintaining strict data integrity</li>    
+            <li>Implemented robust user authentication and validation workflows, including salted password hashing, encryption keys, and secure key management</li>    
+            <li>Applied best-practice cryptography methods: all sensitive data (passwords, secrets, keys) encrypted/decrypted client-side; no sensitive information stored in plaintext on the server</li>    
+            <li>Ensured secure client-server interactions and mitigated common web vulnerabilities</li>    
+        </ul>
+    </div> 
+    <div id="experience" class="container">
+        <h2>Experience</h2>
+            <strong>BS, Computer Science, BYU-Idaho, Expected Grad: Apr. 2026</strong>
+            <p>Combined software engineering principles with AI/ML techniques in academic and personal projects, creating functional applications grounded in real-world problem-solving, rather than purely academic exercise.</p>
+            <strong>K-12 Math Tutor, Mathnasium, Oct. 2025 - Jan. 2026</strong>
+            <ul>
+                <li>Provided one-on-one and group tutoring for K–12 students, covering k-12 math</li>
+                <li>Monitored student progress, identified areas of weakness, and implemented targeted strategies</li>
+            </ul>
+            <strong>Sales Representative, Zeo Energy, Summer 2021, 2022, 2023</strong>
+            <ul>
+                <li>Generated over $1.1M in revenue through direct residential solar sales across three summer seasons</li>
+                <li>Trained new and experienced sales representatives and led individual and group meetings, reinforcing sales strategies and improving team effectiveness</li>
+            </ul>
+            <strong>Volunteer Representative, Church of Jesus Chist of Latter-day Saints, July 2019 – July 2021</strong>
+            <ul>
+                <li>Navigated sensitive, faith-based conversations with people from diverse backgrounds, using strong interpersonal and communication skills</li>
+                <li>Set, tracked, and achieved personal and team goals while working within a highly structured global organization</li>
+            </ul>
+    </div>
+    <div id="skills" class="container">
+        <h2>Skills</h2>
+        <ul>
+            <li><strong>Programming Languages: </strong>Python, C#, Kotlin, JavaScript, SQL</li>
+            <li><strong>Frameworks & Libraries: </strong>PyTorch, TensorFlow, FastAPI, Flask, Cryptography, Unsloth, PyGame</li>
+            <li><strong>Platforms & Tools: </strong>Windows, Linux, MacOS, Microsoft Office, Adobe Premiere Pro, Adobe After Effects, Cinema 4D, SolidWorks, GIMP, Adobe Photoshop</li>
+            <li><strong>Interests & Projects: </strong>AI/ML applications, full-stack development, embedded systems, video games, fitness</li>
+        </ul>
+    </div>
+</div>

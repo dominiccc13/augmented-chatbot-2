@@ -1,0 +1,73 @@
+<div id="project-documentation">
+    <h1>AI Career Assistant & Portfolio API</h1>
+    <p>
+        A RAG-powered (Retrieval-Augmented Generation) chatbot and portfolio API built with FastAPI. 
+        This project serves as a career assistant, allowing hiring managers to query my professional 
+        background, technical skills, and experience through a natural language interface.
+    </p>
+
+    <h2>Technical Highlights</h2>
+    <ul>
+        <li>
+            <strong>RAG Implementation:</strong> Uses <code>sentence-transformers</code> (<code>all-MiniLM-L6-v2</code>) 
+            to vectorize a custom knowledge base (<code>me.json</code>). It performs a cosine similarity search 
+            to retrieve the most relevant context before generating a response with OpenAI.
+        </li>
+        <li>
+            <strong>Custom Rate Limiting:</strong> Implements a rolling hourly window rate-limiter based on 
+            client IP addresses to manage API costs and prevent abuse.
+        </li>
+        <li>
+            <strong>Production-Ready API:</strong> Built with FastAPI, featuring asynchronous endpoints, 
+            CORS middleware for frontend integration, and structured error handling.
+        </li>
+        <li>
+            <strong>Automated SMTP Integration:</strong> A secure email endpoint for direct contact, 
+            featuring IP-based spam protection.
+        </li>
+    </ul>
+
+    <h2>Tech Stack</h2>
+    <ul>
+        <li><strong>Backend:</strong> Python, FastAPI, Uvicorn</li>
+        <li><strong>AI/ML:</strong> OpenAI API, Sentence-Transformers, Scikit-Learn (Cosine Similarity)</li>
+        <li><strong>Deployment:</strong> AWS EC2, nftables (Port forwarding), Dotenv (Environment Security)</li>
+        <li><strong>Frontend:</strong> Jinja2 Templates, Vanilla JavaScript, CSS3</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    
+    <ol>
+        <li>
+            <strong>Vectorization:</strong> On startup, the system loads professional experience from 
+            JSON and generates embeddings.
+        </li>
+        <li>
+            <strong>Retrieval:</strong> When a user asks a question, the system finds the most similar 
+            pre-written response.
+        </li>
+        <li>
+            <strong>Augmentation:</strong> The retrieved context is injected into a specialized system prompt.
+        </li>
+        <li>
+            <strong>Generation:</strong> OpenAI generates a refined, professional response tailored to 
+            a hiring manager's perspective.
+        </li>
+    </ol>
+
+    <h2>Security & Reliability</h2>
+    <ul>
+        <li><strong>Environment Isolation:</strong> Sensitive API keys and SMTP credentials are managed via <code>.env</code>.</li>
+        <li>
+            <strong>Global & Local Rate Limits:</strong> 
+            <ul>
+                <li>Global: Maximum 20 unique visitors per hour.</li>
+                <li>Local: Maximum 50 prompts/3 emails per IP per hour.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Graceful Error Handling:</strong> Implements standard HTTP 429 (Too Many Requests) 
+            and 500 (Server Error) status codes to ensure frontend resilience.
+        </li>
+    </ul>
+</div>

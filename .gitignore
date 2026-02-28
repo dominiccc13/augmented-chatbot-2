@@ -1,0 +1,4 @@
+.env
+__pycache__/
+misc/embeddings.py
+misc/responses.txt
