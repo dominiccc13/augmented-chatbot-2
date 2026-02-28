@@ -6,7 +6,7 @@ const chatHistoryGlobal = [];
 
 async function chat(promptValue, chatHistory) {
     try {
-        const response = await fetch('http://127.0.0.1:8000/prompt', {
+        const response = await fetch('/prompt', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
