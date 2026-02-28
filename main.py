@@ -84,7 +84,3 @@ def home(request: Request):
 @app.get("/resume", response_class=HTMLResponse)
 def resume(request: Request):
     return templates.TemplateResponse("resume.html", {"request": request})
-
-@app.get("/chatbot-readme", response_class=HTMLResponse)
-def resume(request: Request):
-    return templates.TemplateResponse("chatbot-readme.html", {"request": request})
