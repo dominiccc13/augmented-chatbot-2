@@ -21,7 +21,7 @@ client = OpenAI()
 
 prompts = []
 responses = []
-with open("me.json") as f:
+with open("./misc/me.json") as f:
     data = json.load(f)
     for msg in data:
         if msg["role"] == "user":
@@ -30,7 +30,7 @@ with open("me.json") as f:
             responses.append(msg["content"])
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-embeddings = np.load("embeddings.npy")
+embeddings = np.load("./misc/embeddings.npy")
 
 def retrieve_response(prompt):
     embedding = model.encode([prompt])
