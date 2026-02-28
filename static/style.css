@@ -124,6 +124,8 @@ h1 {
     width: 18%;
     transition: width 0.3s ease;
     z-index: 1000;
+    height: 100vh;
+    overflow: auto;
 }
 
 #sidebar-toggle {
