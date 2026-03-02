@@ -175,6 +175,7 @@ h1 {
     border-bottom: 1px solid #ccc;
 }
 
+/* ---------- MOBILE ---------- */
 @media (max-width: 700px) {
 
     #chatbot {
@@ -211,7 +212,7 @@ h1 {
         margin: 0 auto;
         
     }
-    
+
     #sidebar {
         display: none;
     }
