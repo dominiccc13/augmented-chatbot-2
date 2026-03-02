@@ -1,5 +1,4 @@
 const messages = document.getElementById('messages');
-const conversation = document.getElementById('conversation');
 let displayUpdated = false;
 
 const chatHistoryGlobal = [];
@@ -25,10 +24,6 @@ async function chat(promptValue, chatHistory) {
     }
 }
 document.getElementById('chat-button').addEventListener('click', async () => {
-    if (!displayUpdated) {
-        conversation.style.display = 'block';
-    }
-
     const prompt = document.getElementById('chat-input').value;
     document.getElementById('chat-input').value = '';
     chatHistoryGlobal.push({"role": "user", "content": prompt});
@@ -49,10 +44,6 @@ document.getElementById('chat-button').addEventListener('click', async () => {
 });
 document.getElementById('chat-input').addEventListener('keydown', async (e) => {
     if (e.key == 'Enter') {
-        if (!displayUpdated) {
-            conversation.style.display = 'block';
-        }
-        
         e.preventDefault();
         const prompt = document.getElementById('chat-input').value;
         document.getElementById('chat-input').value = '';
