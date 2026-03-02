@@ -39,7 +39,7 @@ def retrieve_response(prompt):
 
     if similarities[idx]*100 < 55:
         with open("./misc/unique.txt", "a") as f:
-            f.write(f"\n{prompt}")
+            f.write(f"{prompt}")
 
     return prompts[idx], responses[idx]
 

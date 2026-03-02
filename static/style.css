@@ -180,6 +180,7 @@ h1 {
     #chatbot {
         display: flex;
         height: 100vh;
+        width: 100vw;
     }
 
     #header {
@@ -206,8 +207,11 @@ h1 {
     #input-container {
         flex: 1;
         max-width: 90vw;
+        width: 70vw;
+        margin: 0 auto;
+        
     }
-
+    
     #sidebar {
         display: none;
     }
