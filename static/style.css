@@ -33,23 +33,19 @@ h1 {
 #chatbot {
     display: flex;
     flex-grow: 1;
+    flex-shrink: 1;
     flex-direction: column;
     height: 100vh;
 }
 
-#conversation {
-    flex: 1;
-    overflow-y: auto;
-}
-
 #messages {
+    flex: 4;
     width: 60%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 25px;
-    overflow-y: auto;
-    max-height: 79%;
-    height: 79%;
+    max-height: 85%;
+    height: 85%;
     background-color: #eee;
     box-shadow: 5px 10px 10px rgba(0,0,0,0.1);
 }
@@ -75,6 +71,10 @@ h1 {
 }
 
 /* ---------- CHAT INPUT ---------- */
+#input-container {
+    flex: 1;
+}
+
 #input-container h3 {
     text-align: center;
     padding: 25px;
@@ -121,7 +121,8 @@ h1 {
     border-left: none;
     border-right: 1px solid #eee;
     background-color: #eee;
-    width: 18%;
+    max-width: 20%;
+    width: 20%;
     transition: width 0.3s ease;
     z-index: 1000;
     height: 100vh;
@@ -172,4 +173,41 @@ h1 {
 #sidebar .subtitle {
     padding-bottom: 15px;
     border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 700px) {
+
+    #chatbot {
+        display: flex;
+        height: 100vh;
+    }
+
+    #header {
+        flex: .5;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    #header #left {
+        flex: 2;
+    }
+
+    #header #right {
+        flex: 1;
+        display: flex;
+        gap: 5px;
+    }
+
+    #messages {
+        flex: 1.5;
+    }
+
+    #input-container {
+        flex: 1;
+    }
+    
+    #sidebar {
+        display: none;
+    }
 }
