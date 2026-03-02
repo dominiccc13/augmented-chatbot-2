@@ -36,6 +36,11 @@ def retrieve_response(prompt):
     embedding = model.encode([prompt])
     similarities = cosine_similarity(embedding, embeddings)[0]
     idx = np.argmax(similarities)
+
+    if similarities[idx]*100 < 55:
+        with open("./misc/unique.txt", "a") as f:
+            f.write(f"\n{prompt}")
+
     return prompts[idx], responses[idx]
 
 # 
