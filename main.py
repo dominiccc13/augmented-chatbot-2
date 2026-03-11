@@ -97,5 +97,5 @@ def bodybuilding(request: Request):
     return templates.TemplateResponse("bodybuilding-news.html", {"request": request})
 
 @app.get("/concrete", response_class=HTMLResponse)
-def bodybuilding(request: Request):
+def concrete(request: Request):
     return templates.TemplateResponse("concrete.html", {"request": request})
