@@ -91,3 +91,11 @@ def home(request: Request):
 @app.get("/resume", response_class=HTMLResponse)
 def resume(request: Request):
     return templates.TemplateResponse("resume.html", {"request": request})
+
+@app.get("/bodybuilding-news", response_class=HTMLResponse)
+def bodybuilding(request: Request):
+    return templates.TemplateResponse("bodybuilding-news.html", {"request": request})
+
+@app.get("/concrete", response_class=HTMLResponse)
+def bodybuilding(request: Request):
+    return templates.TemplateResponse("concrete.html", {"request": request})
