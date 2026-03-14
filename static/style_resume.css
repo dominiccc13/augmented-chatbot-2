@@ -28,8 +28,3 @@ h1 {
     text-decoration: none;
     color: black;
 }
-
-#header #right a:not(:last-child) {
-    padding-right: 8px;
-    border-right: 1px solid gray;
-}
