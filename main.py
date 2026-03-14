@@ -99,3 +99,7 @@ def bodybuilding(request: Request):
 @app.get("/concrete", response_class=HTMLResponse)
 def concrete(request: Request):
     return templates.TemplateResponse("concrete.html", {"request": request})
+
+@app.get("/design", response_class=HTMLResponse)
+def design(request: Request):
+    return templates.TemplateResponse("design.html", {"request": request})
