@@ -93,14 +93,6 @@ def home(request: Request):
 def resume(request: Request):
     return templates.TemplateResponse("resume.html", {"request": request})
 
-@app.get("/bodybuilding-news", response_class=HTMLResponse)
-def bodybuilding(request: Request):
-    return templates.TemplateResponse("bodybuilding-news.html", {"request": request})
-
-@app.get("/concrete", response_class=HTMLResponse)
-def concrete(request: Request):
-    return templates.TemplateResponse("concrete.html", {"request": request})
-
 @app.get("/design", response_class=HTMLResponse)
 def design(request: Request):
     return templates.TemplateResponse("design.html", {"request": request})
