@@ -26,6 +26,7 @@ async function chat(promptValue, chatHistory) {
 document.getElementById('chat-button').addEventListener('click', async () => {
     const prompt = document.getElementById('chat-input').value;
     document.getElementById('chat-input').value = '';
+    document.getElementById('chat-input').disabled = true;
     chatHistoryGlobal.push({"role": "user", "content": prompt});
     
     const msg = document.createElement('div');
@@ -38,12 +39,13 @@ document.getElementById('chat-button').addEventListener('click', async () => {
     bot_msg.innerText = 'Thinking...';
     messages.appendChild(bot_msg);
     
-    const response = await chat(prompt, chatHistoryGlobal.slice(-10));
+    const response = await chat(prompt, chatHistoryGlobal.slice(-6));
     bot_msg.innerText = response.response;
+    document.getElementById('chat-input').disabled = false;
     chatHistoryGlobal.push({"role": "assistant", "content": response.response});
 });
 document.getElementById('chat-input').addEventListener('keydown', async (e) => {
-    if (e.key == 'Enter') {
+    if (e.key == 'Enter' && !document.getElementById('chat-input').disabled) {
         e.preventDefault();
         const prompt = document.getElementById('chat-input').value;
         document.getElementById('chat-input').value = '';
@@ -59,7 +61,7 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         bot_msg.innerText = 'Thinking...';
         messages.appendChild(bot_msg);
         
-        const response = await chat(prompt, chatHistoryGlobal.slice(-10));
+        const response = await chat(prompt, chatHistoryGlobal.slice(-6));
         bot_msg.innerText = response.response;
         chatHistoryGlobal.push({"role": "assistant", "content": response.response});
     }
