@@ -81,8 +81,6 @@ def prompt(chatRequest: ChatRequest):
     }
     messages = [system_message, context_message] + history + [{"role": "user", "content": prompt}]
 
-    print(prompt)
-
     def generate():
         completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
         for chunk in completion:

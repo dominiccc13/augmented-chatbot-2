@@ -54,6 +54,8 @@ async function chat(promptValue, chatHistory) {
     }
 }
 document.getElementById('chat-button').addEventListener('click', async () => {
+    document.getElementById('sidebar-toggle').checked = true;
+    
     const prompt = document.getElementById('chat-input').value;
     document.getElementById('chat-input').value = '';
     document.getElementById('chat-input').disabled = true;
@@ -77,6 +79,7 @@ document.getElementById('chat-button').addEventListener('click', async () => {
 document.getElementById('chat-input').addEventListener('keydown', async (e) => {
     if (e.key == 'Enter' && !document.getElementById('chat-input').disabled) {
         e.preventDefault();
+        document.getElementById('sidebar-toggle').checked = true;
         const prompt = document.getElementById('chat-input').value;
         document.getElementById('chat-input').value = '';
         document.getElementById('chat-input').disabled = true;
