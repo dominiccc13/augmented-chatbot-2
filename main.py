@@ -1,9 +1,8 @@
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, StreamingResponse
 from pydantic import BaseModel
 from openai import OpenAI
 
@@ -82,8 +81,15 @@ def prompt(chatRequest: ChatRequest):
     }
     messages = [system_message, context_message] + history + [{"role": "user", "content": prompt}]
 
-    completion = client.chat.completions.create(model="gpt-5-nano", messages=messages)
-    return {"response": completion.choices[0].message.content}
+    print(prompt)
+
+    def generate():
+        completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
+        for chunk in completion:
+            if chunk.choices[0].delta.content:
+                yield chunk.choices[0].delta.content
+    
+    return StreamingResponse(generate(), media_type="text/plain")
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):

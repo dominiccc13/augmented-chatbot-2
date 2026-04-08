@@ -1,6 +1,5 @@
 const messages = document.getElementById('messages');
 let displayUpdated = false;
-
 const chatHistoryGlobal = [];
 
 async function chat(promptValue, chatHistory) {
@@ -12,15 +11,27 @@ async function chat(promptValue, chatHistory) {
             },
             body: JSON.stringify({prompt: promptValue, history: chatHistory})  
         });
-        const data = await response.json();
 
-        if (!response.ok) {
-            return {response: data.detail || 'An error occurred.'};
+        if (!response.ok) return 'Error connecting to server.';
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let fullText = '';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value, { stream: true });
+            fullText += chunk;
+
+            const botMessages = document.querySelectorAll('.bot-message');
+            botMessages[botMessages.length - 1].innerText = fullText;
         }
 
-        return data;
+        return {response: fullText};
     } catch (error) {
-        return {response: 'Could not connect to the server. Please try again later.'};
+        return {response: error};
     }
 }
 document.getElementById('chat-button').addEventListener('click', async () => {
