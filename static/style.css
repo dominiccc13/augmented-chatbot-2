@@ -11,6 +11,7 @@ h1 {
 }
 
 #app {
+    position: relative;
     display: flex;
     gap: 10px;
 }
@@ -40,7 +41,11 @@ h1 {
 
 #messages {
     flex: 4;
+    display: flex;
+    flex-direction: column;
     width: 60%;
+    min-width: 0;
+    max-width: 60%;
     margin: 20px auto;
     padding: 20px;
     border-radius: 25px;
@@ -48,10 +53,11 @@ h1 {
     height: 85%;
     background-color: #eee;
     box-shadow: 5px 10px 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
 }
 
 #messages .user-message {
-    justify-self: right;
+    align-self: flex-end;
     background-color: #ccc;
     border-radius: 20px;
     width: fit-content;
@@ -62,8 +68,16 @@ h1 {
 }
 
 #messages .bot-message {
+    align-self: flex-start;
+    width: fit-content;
+    max-width: 70%;
+    min-width: 0;
+
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+
     justify-self: left;
-    max-width: 100%;
     padding: 5px 10px;
     background-color: #1e272e;
     border-radius: 20px;

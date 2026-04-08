@@ -1,6 +1,23 @@
 const messages = document.getElementById('messages');
 let displayUpdated = false;
 const chatHistoryGlobal = [];
+let thinkingState = false;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function thinking() {
+    const botMsgs = document.querySelectorAll('.bot-message');
+    const botMsg = botMsgs[botMsgs.length - 1];
+
+    while (thinkingState) {
+        if (botMsg.innerText === 'Thinking...') botMsg.innerText = 'Thinking';
+        else botMsg.innerText += '.';
+        
+        await sleep(500);
+    }
+}
 
 async function chat(promptValue, chatHistory) {
     try {
@@ -17,10 +34,12 @@ async function chat(promptValue, chatHistory) {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let fullText = '';
+        thinkingState = true;
+        thinking();
 
         while (true) {
             const { done, value } = await reader.read();
-            if (done) break;
+            if (done) { thinkingState = false; break };
 
             const chunk = decoder.decode(value, { stream: true });
             fullText += chunk;
@@ -51,7 +70,7 @@ document.getElementById('chat-button').addEventListener('click', async () => {
     messages.appendChild(bot_msg);
     
     const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-    bot_msg.innerText = response.response;
+    // bot_msg.innerText = response.response;
     document.getElementById('chat-input').disabled = false;
     chatHistoryGlobal.push({"role": "assistant", "content": response.response});
 });
@@ -60,6 +79,7 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         e.preventDefault();
         const prompt = document.getElementById('chat-input').value;
         document.getElementById('chat-input').value = '';
+        document.getElementById('chat-input').disabled = true;
         chatHistoryGlobal.push({"role": "user", "content": prompt});
         
         const msg = document.createElement('div');
@@ -73,7 +93,8 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         messages.appendChild(bot_msg);
         
         const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-        bot_msg.innerText = response.response;
+        // bot_msg.innerText = response.response;
+        document.getElementById('chat-input').disabled = false;
         chatHistoryGlobal.push({"role": "assistant", "content": response.response});
     }
 });
