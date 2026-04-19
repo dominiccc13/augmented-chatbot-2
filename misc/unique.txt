@@ -9,4 +9,3 @@ did you fine tune this model?
 
 what experience do you have with java?
 
-what experience do you have with sql?
