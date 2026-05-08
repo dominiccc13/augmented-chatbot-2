@@ -10,8 +10,8 @@ A RAG-powered (Retrieval-Augmented Generation) chatbot and portfolio API built w
 ## Tech Stack
 
 - **Backend:** Python, FastAPI, Uvicorn
-- **AI/ML:** OpenAI API (GPT-4o/GPT-5-nano), Sentence-Transformers, Scikit-Learn (Cosine Similarity)
-- **Deployment:** AWS EC2, nftables (Port forwarding), Dotenv (Environment Security)
+- **AI/ML:** OpenAI API (GPT-5-nano), Sentence-Transformers, Scikit-Learn (Cosine Similarity)
+- **Deployment:** AWS EC2, nftables (Port forwarding), Dotenv (Environment Security), Nginx
 - **Frontend:** Jinja2 Templates, Vanilla JavaScript, CSS3
 
 ## Architecture
