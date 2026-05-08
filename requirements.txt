@@ -10,7 +10,7 @@ python-dotenv
 pydantic
 
 # ml & logic
-torch>=2.4.0
-sentence-transformers>=3.0.0
+# install torchvision and torchaudio first manually in your venv. ensure they are >= 2.4.0. then, run pip install -r requirements.txt.
+sentence-transformers
 scikit-learn
 numpy<2.0.0
