@@ -10,6 +10,7 @@ python-dotenv
 pydantic
 
 # ml & logic
-sentence-transformers
+torch>=2.4.0
+sentence-transformers>=3.0.0
 scikit-learn
-numpy
+numpy<2.0.0
