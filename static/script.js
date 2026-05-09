@@ -38,14 +38,18 @@ async function chat(promptValue, chatHistory) {
         thinking();
 
         while (true) {
-            const { done, value } = await reader.read();
-            if (done) { thinkingState = false; break };
-
-            const chunk = decoder.decode(value, { stream: true });
-            fullText += chunk;
-
-            const botMessages = document.querySelectorAll('.bot-message');
-            botMessages[botMessages.length - 1].innerText = fullText;
+            try {
+                const { done, value } = await reader.read();
+                if (done) { thinkingState = false; break };
+    
+                const chunk = decoder.decode(value, { stream: true });
+                fullText += chunk;
+    
+                const botMessages = document.querySelectorAll('.bot-message');
+                botMessages[botMessages.length - 1].innerText = fullText;
+            } catch {
+                return {response: 'Something went wrong. Please try again later.'};
+            }
         }
 
         return {response: fullText};
