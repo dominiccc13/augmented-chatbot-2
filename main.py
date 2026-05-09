@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -29,7 +29,7 @@ with open("./misc/me.json") as f:
             responses.append(msg["content"])
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-embeddings = np.load("./misc/embeddings.npy")
+embeddings = np.load("./misc/new_embeddings.npy")
 
 def retrieve_response(prompt):
     embedding = model.encode([prompt])
@@ -55,7 +55,7 @@ class ChatRequest(BaseModel):
     history: list[dict[str, str]]
 
 @app.post("/prompt")
-def prompt(chatRequest: ChatRequest):
+def prompt(chatRequest: ChatRequest, response: Response):
     prompt = chatRequest.prompt
     history = chatRequest.history
 
@@ -82,10 +82,14 @@ def prompt(chatRequest: ChatRequest):
     messages = [system_message, context_message] + history + [{"role": "user", "content": prompt}]
 
     def generate():
-        completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
-        for chunk in completion:
-            if chunk.choices[0].delta.content:
-                yield chunk.choices[0].delta.content
+        try:
+            completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
+            for chunk in completion:
+                if chunk.choices[0].delta.content:
+                    yield chunk.choices[0].delta.content
+        except Exception as e:
+            response.status_code = 429
+            return {"error": "An unexpected error occurred."}
     
     return StreamingResponse(generate(), media_type="text/plain")
 

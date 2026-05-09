@@ -4,3 +4,5 @@ misc/embeddings.py
 misc/responses.txt
 .venv/
 todo.txt
+data.json
+script.py

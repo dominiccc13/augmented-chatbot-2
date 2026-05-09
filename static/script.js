@@ -29,7 +29,7 @@ async function chat(promptValue, chatHistory) {
             body: JSON.stringify({prompt: promptValue, history: chatHistory})  
         });
 
-        if (!response.ok) return 'Error connecting to server.';
+        if (!response.ok) return {response: 'An unexpected error occurred. Please try again later.'};
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
