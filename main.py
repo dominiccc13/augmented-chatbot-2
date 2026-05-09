@@ -82,7 +82,7 @@ def prompt(chatRequest: ChatRequest, response: Response):
     messages = [system_message, context_message] + history + [{"role": "user", "content": prompt}]
 
     try: 
-        completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
+        completion = client.chat.completions.create(model="gpt-5.4-nano", messages=messages, stream=True)
         def generate():
             for chunk in completion:
                 if chunk.choices[0].delta.content:
@@ -91,7 +91,7 @@ def prompt(chatRequest: ChatRequest, response: Response):
         return StreamingResponse(generate(), media_type="text/plain")
     except Exception as e:
         response.status_code = status.HTTP_429_TOO_MANY_REQUESTS
-        return {"error": e}
+        return {"error": str(e)}
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
