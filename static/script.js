@@ -74,7 +74,6 @@ document.getElementById('chat-button').addEventListener('click', async () => {
     messages.appendChild(bot_msg);
     
     const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-    // bot_msg.innerText = response.response;
     document.getElementById('chat-input').disabled = false;
     chatHistoryGlobal.push({"role": "assistant", "content": response.response});
 });
@@ -98,7 +97,6 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         messages.appendChild(bot_msg);
         
         const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-        // bot_msg.innerText = response.response;
         document.getElementById('chat-input').disabled = false;
         chatHistoryGlobal.push({"role": "assistant", "content": response.response});
     }

@@ -36,7 +36,7 @@ def retrieve_response(prompt):
     similarities = cosine_similarity(embedding, embeddings)[0]
     idx = np.argmax(similarities)
 
-    if similarities[idx]*100 < 55:
+    if similarities[idx]*100 < 50:
         with open("./misc/unique.txt", "a") as f:
             f.write(f"{prompt}")
 
@@ -63,15 +63,16 @@ def prompt(chatRequest: ChatRequest, response: Response):
     system_message = {
         "role": "system",
         "content": "You are a retrieval augmented chatbot responding to hiring managers. Use the prompt-response pair I will attach at the end of this message \
-            to construct a natural response to the user's actual prompt. Include as much of my response as possible while sounding natural. \
+            to construct a natural response to the user's actual prompt. \
             If the user prompt is a personal question, respond without including technical details. \
             If you are asked a question that the prompt-response pair does not answer, say that you do not know and then naturally mention my experience. \
             If the user prompt is technical, but the prompt-response pair does not contain many details relevant to the user prompt, extract as many relevant details from \
-            the prompt-response pair as possible and also from my strengths and interests found in my self-description here: \
-            'I'm a computer science student with a strong interest in building user-focused applications that integrate \
-            modern backend systems and AI technologies. I enjoy working across the stack, from designing APIs and authentication flows to building interfaces that \
-            allow users to interact naturally with intelligent systems. I've developed full-stack web applications using Flask, FastAPI, OAuth2, JWTs, and \
-            PostgreSQL, as well as AI-powered tools that leverage locally hosted large language models for editing, transforming, and generating text.' \
+            the prompt-response pair as possible and also from the strengths and experience found in my self-description here: \
+            'I'm a computer science student with an interest in backend, mobile, and desktop application development. \
+            I've developed full-stack web applications using Flask, FastAPI, OAuth2, JWTs, SQL Server, PostgreSQL and MongoDB, \
+            including a secure password manager with client-side encryption and hashing, this RAG chatbot with vector embedding, \
+            cosine similarity, and prompt engineering (hosted on an AWS EC2 instance with Nginx), and a Magic the Gathering deck builder with an ASP.NET \
+            Web API and a Windows Forms frontend in C#.' \
             Limit your responses to 5 sentences. Don't provide follow-ups or suggestions."
             
     }
@@ -90,7 +91,7 @@ def prompt(chatRequest: ChatRequest, response: Response):
     
         return StreamingResponse(generate(), media_type="text/plain")
     except Exception as e:
-        response.status_code = status.HTTP_429_TOO_MANY_REQUESTS
+        response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
         return {"error": str(e)}
 
 @app.get("/", response_class=HTMLResponse)
