@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request, Response, status
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -65,14 +65,14 @@ def prompt(chatRequest: ChatRequest, response: Response):
         "content": "You are a retrieval augmented chatbot responding to hiring managers. Use the prompt-response pair I will attach at the end of this message \
             to construct a natural response to the user's actual prompt. Include as much of my response as possible while sounding natural. \
             If the user prompt is a personal question, respond without including technical details. \
-            If you are asked a question that the prompt-response pair does not answer, say that you don not know and then naturally mention my experience. \
+            If you are asked a question that the prompt-response pair does not answer, say that you do not know and then naturally mention my experience. \
             If the user prompt is technical, but the prompt-response pair does not contain many details relevant to the user prompt, extract as many relevant details from \
             the prompt-response pair as possible and also from my strengths and interests found in my self-description here: \
             'I'm a computer science student with a strong interest in building user-focused applications that integrate \
             modern backend systems and AI technologies. I enjoy working across the stack, from designing APIs and authentication flows to building interfaces that \
             allow users to interact naturally with intelligent systems. I've developed full-stack web applications using Flask, FastAPI, OAuth2, JWTs, and \
             PostgreSQL, as well as AI-powered tools that leverage locally hosted large language models for editing, transforming, and generating text.' \
-            Limit your responses to 4 sentences. Use less if possible. Don't provide follow-ups or suggestions."
+            Limit your responses to 4 sentences. Don't provide follow-ups or suggestions."
             
     }
     context_message = {
@@ -81,17 +81,17 @@ def prompt(chatRequest: ChatRequest, response: Response):
     }
     messages = [system_message, context_message] + history + [{"role": "user", "content": prompt}]
 
-    def generate():
-        try:
-            completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
+    try: 
+        completion = client.chat.completions.create(model="gpt-5-nano", messages=messages, stream=True)
+        def generate():
             for chunk in completion:
                 if chunk.choices[0].delta.content:
                     yield chunk.choices[0].delta.content
-        except Exception as e:
-            response.status_code = 429
-            return {"error": "An unexpected error occurred."}
     
-    return StreamingResponse(generate(), media_type="text/plain")
+        return StreamingResponse(generate(), media_type="text/plain")
+    except Exception as e:
+        response.status_code = status.HTTP_429_TOO_MANY_REQUESTS
+        return {"error": e}
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):

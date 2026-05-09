@@ -20,42 +20,40 @@ async function thinking() {
 }
 
 async function chat(promptValue, chatHistory) {
-    try {
-        const response = await fetch('/prompt', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({prompt: promptValue, history: chatHistory})  
-        });
+    thinkingState = true;
+    thinking();
 
-        if (!response.ok) return {response: 'Something went wrong. Please try again later.'};
+    const response = await fetch('/prompt', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({prompt: promptValue, history: chatHistory})  
+    });
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let fullText = '';
-        thinkingState = true;
-        thinking();
-
-        while (true) {
-            try {
-                const { done, value } = await reader.read();
-                if (done) { thinkingState = false; break };
-    
-                const chunk = decoder.decode(value, { stream: true });
-                fullText += chunk;
-    
-                const botMessages = document.querySelectorAll('.bot-message');
-                botMessages[botMessages.length - 1].innerText = fullText;
-            } catch {
-                return {response: 'Something went wrong. Please try again later.'};
-            }
-        }
-
-        return {response: fullText};
-    } catch (error) {
-        return {response: error};
+    if (!response.ok) {
+        thinkingState = false;
+        const botMessages = document.querySelectorAll('.bot-message');
+        botMessages[botMessages.length - 1].innerText = 'Something went wrong. Please try again later.';
+        return {response: ''};
     }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let fullText = '';
+
+    while (true) {
+        const { done, value } = await reader.read();
+        if (done) { thinkingState = false; break };
+
+        const chunk = decoder.decode(value, { stream: true });
+        fullText += chunk;
+
+        const botMessages = document.querySelectorAll('.bot-message');
+        botMessages[botMessages.length - 1].innerText = fullText;
+    }
+
+    return {response: fullText};
 }
 document.getElementById('chat-button').addEventListener('click', async () => {
     document.getElementById('sidebar-toggle').checked = true;
@@ -72,11 +70,11 @@ document.getElementById('chat-button').addEventListener('click', async () => {
     
     const bot_msg = document.createElement('div');
     bot_msg.className = 'bot-message';
-    bot_msg.innerText = 'Thinking...';
+    bot_msg.innerText = 'Thinking';
     messages.appendChild(bot_msg);
     
     const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-    bot_msg.innerText = response.response;
+    // bot_msg.innerText = response.response;
     document.getElementById('chat-input').disabled = false;
     chatHistoryGlobal.push({"role": "assistant", "content": response.response});
 });
@@ -100,7 +98,7 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         messages.appendChild(bot_msg);
         
         const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-        bot_msg.innerText = response.response;
+        // bot_msg.innerText = response.response;
         document.getElementById('chat-input').disabled = false;
         chatHistoryGlobal.push({"role": "assistant", "content": response.response});
     }
