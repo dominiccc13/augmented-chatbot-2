@@ -30,6 +30,7 @@ async function chat(promptValue, chatHistory) {
         });
 
         if (!response.ok) return {response: 'An unexpected error occurred. Please try again later.'};
+        return {response: 'An unexpected error occurred. Please try again later.'};
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
