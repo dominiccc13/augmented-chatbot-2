@@ -72,7 +72,7 @@ def prompt(chatRequest: ChatRequest, response: Response):
             modern backend systems and AI technologies. I enjoy working across the stack, from designing APIs and authentication flows to building interfaces that \
             allow users to interact naturally with intelligent systems. I've developed full-stack web applications using Flask, FastAPI, OAuth2, JWTs, and \
             PostgreSQL, as well as AI-powered tools that leverage locally hosted large language models for editing, transforming, and generating text.' \
-            Limit your responses to 4 sentences. Don't provide follow-ups or suggestions."
+            Limit your responses to 5 sentences. Don't provide follow-ups or suggestions."
             
     }
     context_message = {
