@@ -29,10 +29,7 @@ async function chat(promptValue, chatHistory) {
             body: JSON.stringify({prompt: promptValue, history: chatHistory})  
         });
 
-        if (!response.ok) return {response: 'An unexpected error occurred. Please try again later.'};
-        return {response: 'An unexpected error occurred. Please try again later.'};
-        const botMessages = document.querySelectorAll('.bot-message');
-        botMessages[botMessages.length - 1].innerText = 'An unexpected error occurred. Please try again later.';
+        if (!response.ok) return {response: 'Something went wrong. Please try again later.'};
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
@@ -75,7 +72,7 @@ document.getElementById('chat-button').addEventListener('click', async () => {
     messages.appendChild(bot_msg);
     
     const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-    // bot_msg.innerText = response.response;
+    bot_msg.innerText = response.response;
     document.getElementById('chat-input').disabled = false;
     chatHistoryGlobal.push({"role": "assistant", "content": response.response});
 });
@@ -99,7 +96,7 @@ document.getElementById('chat-input').addEventListener('keydown', async (e) => {
         messages.appendChild(bot_msg);
         
         const response = await chat(prompt, chatHistoryGlobal.slice(-6));
-        // bot_msg.innerText = response.response;
+        bot_msg.innerText = response.response;
         document.getElementById('chat-input').disabled = false;
         chatHistoryGlobal.push({"role": "assistant", "content": response.response});
     }
