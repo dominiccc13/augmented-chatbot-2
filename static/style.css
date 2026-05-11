@@ -63,6 +63,11 @@ h1 {
     overflow-y: auto;
 }
 
+.sidebar-content .subtitle {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
 #toggle-button {
     /* formatting */
     position: absolute;
