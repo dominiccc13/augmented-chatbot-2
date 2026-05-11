@@ -1,4 +1,4 @@
-/* ---------- GENERAL ---------- */
+/* -------- GENERAL -------- */
 html, body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     height: 100%;
@@ -11,87 +11,113 @@ h1 {
 }
 
 #app {
-    position: relative;
     display: flex;
-    gap: 10px;
+    width: 100vw;
 }
 
-/* ---------- HEADER ---------- */
+/* -------- HEADER -------- */
 #header {
+    /* formatting */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    
+    flex: 1;
+    width: 100%;
+
+    /* appearance */
     border-bottom: 1px solid #ccc;
 }
 
-#header a {
+#header #right a {
     text-decoration: none;
-    color: black;
+    color: #1e272e;
 }
 
-/* ---------- BODY ---------- */
-#chatbot {
+/* -------- SIDEBAR -------- */
+#sidebar {
+    /* formatting */
     display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-direction: column;
+    position: relative;
+    max-width: 20vw;
+    min-width: 60px;
     height: 100vh;
+    
+    /* dynamic formatting */
+    transition: width 0.3s ease;
+
+    /* appearance */
+    border-right: 1px solid #eee;
 }
 
-#messages {
-    flex: 4;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    min-width: 0;
-    max-width: 60%;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 25px;
-    max-height: 85%;
-    height: 85%;
-    background-color: #eee;
-    box-shadow: 5px 10px 10px rgba(0,0,0,0.1);
+.sidebar-content {
+    padding: 16px;
     overflow-y: auto;
 }
 
-#messages .user-message {
+#toggle-button {
+    /* formatting */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#sidebar-toggle {
+    display: none;
+}
+
+#sidebar-toggle:checked ~ .sidebar-content {
+    display: none;
+}
+
+#sidebar-toggle:checked + #toggle-button {
+    transform: rotate(180deg);
+    right: 8px;
+}
+
+/* -------- CHATBOT -------- */
+#chatbot {
+    /* formatting */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#messages {
+    /* formatting as parent */
+    display: flex;
+    flex-direction: column;
+    
+    /* formatting as child*/
+    flex: 8;
+    margin: 0 25%;
+}
+
+.bot-message {
+    padding: 8px;
+}
+
+.user-message {
+    /* formatting  */
     align-self: flex-end;
-    background-color: #ccc;
-    border-radius: 20px;
-    width: fit-content;
-    padding: 5px 10px;
-    max-width: 45%;
-    color: #1e272e;
-    margin: 10px 0;
+    max-width: 50%;
+
+    /* appearance */
+    background-color: #eee;
+    padding: 8px;
+    border-radius: 8px;
 }
 
-#messages .bot-message {
-    align-self: flex-start;
-    width: fit-content;
-    max-width: 70%;
-    min-width: 0;
-
-    overflow-wrap: break-word;
-    word-break: break-word;
-    box-sizing: border-box;
-
-    justify-self: left;
-    padding: 5px 10px;
-    background-color: #1e272e;
-    border-radius: 20px;
-    color: white;
-}
-
-/* ---------- CHAT INPUT ---------- */
 #input-container {
-    flex: 1;
-}
-
-#input-container h3 {
-    text-align: center;
-    padding: 25px;
+    /* formatting as parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    
+    /* formatting as child */
+    flex: 1.2;
 }
 
 #input {
@@ -127,107 +153,4 @@ h1 {
 
 #input button:hover {
     background-color: #0056b3;
-}
-
-/* ---------- SIDEBAR ---------- */
-#sidebar {
-    position: relative;
-    border-left: none;
-    border-right: 1px solid #eee;
-    background-color: #eee;
-    max-width: 20%;
-    width: 20%;
-    transition: width 0.3s ease;
-    z-index: 1000;
-    height: 100vh;
-    overflow: auto;
-}
-
-#sidebar-toggle {
-    display: none;
-}
-
-#toggle-button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    padding: 0 5px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 20px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-#sidebar-toggle:checked ~ .sidebar-content {
-    display: none;
-    right: -35px;
-}
-
-#sidebar-toggle:checked + #toggle-button {
-    transform: rotate(180deg);
-}
-
-#sidebar-toggle:checked ~ #sidebar, 
-#sidebar:has(#sidebar-toggle:checked) {
-    width: 3%;
-}
-
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
-#sidebar .subtitle {
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
-}
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 700px) {
-
-    #chatbot {
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    #header {
-        flex: .5;
-        display: flex;
-        gap: 10px;
-        justify-content: space-between;
-    }
-
-    #header #left {
-        flex: 2;
-    }
-
-    #header #right {
-        flex: 1;
-        display: flex;
-        gap: 5px;
-    }
-
-    #messages {
-        flex: 1.5;
-    }
-
-    #input-container {
-        flex: 1;
-        max-width: 90vw;
-        width: 70vw;
-        margin: 0 auto;
-        
-    }
-
-    #sidebar {
-        display: none;
-    }
 }
