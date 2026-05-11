@@ -109,6 +109,8 @@ h1 {
     border-radius: 8px;
 }
 
+/* -------- INPUT -------- */
+
 #input-container {
     /* formatting as parent */
     display: flex;
