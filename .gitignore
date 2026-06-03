@@ -2,6 +2,7 @@
 __pycache__/
 misc/embeddings.py
 misc/responses.txt
+misc/embeddings.npy
 .venv/
 todo.txt
 data.json
