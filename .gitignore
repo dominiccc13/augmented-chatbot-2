@@ -1,12 +1,12 @@
 .env
 __pycache__/
-misc/embeddings.py
 misc/responses.txt
-misc/embeddings.npy
+misc/old_embeddings.npy
 .venv/
 todo.txt
 data.json
 script.py
+embeddings.py
 index_text.html
 style_test.css
 script_test.js

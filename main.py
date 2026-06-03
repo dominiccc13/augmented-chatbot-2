@@ -29,7 +29,7 @@ with open("./misc/me.json") as f:
             responses.append(msg["content"])
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
-embeddings = np.load("./misc/new_embeddings.npy")
+embeddings = np.load("./misc/embeddings.npy")
 
 def retrieve_response(prompt):
     embedding = model.encode([prompt])
