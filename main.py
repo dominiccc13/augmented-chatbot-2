@@ -74,7 +74,6 @@ def prompt(chatRequest: ChatRequest, response: Response):
             cosine similarity, and prompt engineering (hosted on an AWS EC2 instance with Nginx), and a Magic the Gathering deck builder with an ASP.NET \
             Web API and a Windows Forms frontend in C#.' \
             Limit your responses to 5 sentences. Don't provide follow-ups or suggestions."
-            
     }
     context_message = {
         "role": "system",
