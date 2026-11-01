@@ -16,6 +16,13 @@
         </header>
         <div id="projects" class="container">
             <h2>Projects</h2>
+            <h3>Desktop Soundboard (C++ + Windows SDK)</h3>
+            <a href="https://github.com/dominiccc13/Soundboard_Cpp_Windows_SDK" target="_blank">GitHub</a>
+            <ul>
+                <li>Built a Windows desktop soundboard in C++ using only standard libraries and the Windows SDK, deliberately writing and understanding every line, with AI used only as a tutor and assistant</li>
+                <li>Parsed binary .wav files and metadata and converted audio from native sample rates and bit depths to PCM float streams</li>
+                <li>Interfaced with the OS audio engine to mix live microphone input with soundboard audio triggered by hotkeys captured through a keyboard hook</li>
+            </ul>
             <h3>Retrieval-Augmented Personal AI Chatbot (FastAPI + Sentence Transformers)</h3>
             <a href="/">GitHub</a>
             <ul>
@@ -25,22 +32,20 @@
                 <li>Developed a resilient FastAPI backend featuring asynchronous request handling, CORS configuration, and custom IP-based rate limiting to manage API costs and prevent automated abuse</li>
                 <li>Built a responsive vanilla JavaScript frontend with custom error handling for HTTP 429 (Rate Limit) and 500 status codes, providing a seamless, chat-like user experience</li>
             </ul>
-            <h3>Full-Stack Secure Password Manager</h3>
-            <a href="https://github.com/dominiccc13/local_pwm" target="_blank">GitHub</a>
+            <h3>MTG Deckbuilder (C# + ASP.NET MVC + Scryfall API)</h3>
+            <a href="https://github.com/dominiccc13/MTG-Deck-Builder_Cs_ASP.NET" target="_blank">GitHub</a>
             <ul>
-                <li>Designed and developed a full-stack password manager with a Flask backend and a responsive front-end using modern HTML, CSS, and vanilla JavaScript, integrating CryptoJS for client-side cryptography</li>
-                <li>Architected a relational SQLite database with multiple tables to efficiently store user and password metadata while maintaining strict data integrity</li>    
-                <li>Implemented robust user authentication and validation workflows, including salted password hashing, encryption keys, and secure key management</li>    
-                <li>Applied best-practice cryptography methods: all sensitive data (passwords, secrets, keys) encrypted/decrypted client-side; no sensitive information stored in plaintext on the server</li>    
-                <li>Ensured secure client-server interactions and mitigated common web vulnerabilities</li>    
+                <li>Built a full-stack Magic: The Gathering deck builder using C# and ASP.NET with a Model-View-Controller architecture and an HTML/CSS/JS frontend</li>
+                <li>Engineered a REST API that interfaces with the external Scryfall API via IHttpClientFactory, parsing complex multi-faced card JSON payloads into an object-oriented model</li>
+                <li>Implemented backend routing for card data retrieval and user deck persistence, letting users work with thousands of card options</li>
             </ul>
-            <h3>MTG Deckbuilder (C# + ASP.NET Core Web API + Windows Forms + Docker)</h3>
-            <a href="https://github.com/dominiccc13/local_pwm" target="_blank">GitHub</a>
+            <h3>Full-Stack Secure Password Manager (Flask + PostgreSQL)</h3>
+            <a href="https://github.com/dominiccc13/Password-Manager_Python_Flask" target="_blank">GitHub</a>
             <ul>
-                <li>Built an asynchronous RESTful API with ASP.NET Core to interface with external data providers, with JSON serialization and complex query logic to handle multiple parameters</li>
-                <li>Architected a scalable microservice environment by containerizing the backend with Docker</li>    
-                <li>Built a modern, dynamic UI in C# with Windows Forms featuring custom drag-and-drop mechanics</li>    
-                <li>Developed a state-aware deck-management system that ensures data integrity by tracking unsaved changes</li>    
+                <li>Designed and developed a full-stack password manager with a Flask backend, PostgreSQL database, and a front-end in HTML, CSS, and vanilla JavaScript</li>
+                <li>Built a zero-knowledge architecture with client-side AES encryption in JavaScript so sensitive data is encrypted before it ever reaches the server</li>
+                <li>Secured the backend with PBKDF2-HMAC password hashing (600,000 iterations) and parameterized SQL queries to prevent injection vulnerabilities</li>
+                <li>Architected a hierarchical relational database in PostgreSQL linked through primary and foreign keys</li>
             </ul>
         </div> 
         <div id="experience" class="container">
@@ -57,7 +62,7 @@
                     <li>Generated over $1.1M in revenue through direct residential solar sales across three summer seasons</li>
                     <li>Trained new and experienced sales representatives and led individual and group meetings, reinforcing sales strategies and improving team effectiveness</li>
                 </ul>
-                <h3><strong>Volunteer Representative, Church of Jesus Chist of Latter-day Saints, July 2019 – July 2021</strong></h3>
+                <h3><strong>Volunteer Representative, Church of Jesus Christ of Latter-day Saints, July 2019 – July 2021</strong></h3>
                 <ul>
                     <li>Navigated sensitive, faith-based conversations with people from diverse backgrounds, using strong interpersonal and communication skills</li>
                     <li>Set, tracked, and achieved personal and team goals while working within a highly structured global organization</li>
@@ -66,10 +71,10 @@
         <div id="skills" class="container">
             <h2>Skills</h2>
             <ul>
-                <li><strong>Programming Languages: </strong>Python, JavaScript, C#, Kotlin, Swift, SQL</li>
+                <li><strong>Programming Languages: </strong>Python, JavaScript, C++, C#, Kotlin, Swift, SQL</li>
                 <li><strong>Frameworks & Libraries: </strong>Flask, FastAPI, ASP.NET, .NET, Express, React, Jetpack Compose, SwiftUI</li>
                 <li><strong>Cloud & DevOps: </strong>AWS (EC2, S3, CloudFormation), Google Firebase, Docker</li>
-                <li><strong>Databases: </strong>SQL Server, PostreSQL, MongoDB, Firestore</li>
+                <li><strong>Databases: </strong>SQL Server, PostgreSQL, SQLite, MongoDB, Firestore</li>
                 <li><strong>Other Skills & Interests: </strong><a href="/design" target="_blank">Video Editing & Graphic Design</a> (Adobe Premiere Pro, Adobe After Effects, Cinema 4D, GIMP, Adobe Photoshop), Fitness, Football</li>
             </ul>
         </div>
