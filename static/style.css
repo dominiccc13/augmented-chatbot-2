@@ -52,45 +52,11 @@ header a:not(h1 a) {
     margin: 0 auto;
     padding: 1rem;
     text-align: center;
+    max-width: 70vw;
 }
 
 #init-msg h2 {
     font-weight: 100;
-}
-
-#prompt {
-    margin: 0 auto;
-    padding: .6rem;
-    width: 50em;
-    display: flex;
-    
-    border: 1px solid lightgray;
-    border-radius: 2rem;
-}
-
-#prompt input {
-    padding-left: .25rem;
-    flex: 3;
-    border: none;
-}
-#prompt input:focus::placeholder {
-    color: transparent;
-}
-#prompt input:focus {
-    outline: none;
-}
-
-#prompt button {
-    padding: .35rem;
-    flex: 1;
-    border: none;
-    border-radius: 1rem;
-    background-color: #1f51ff;
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
-}
-#prompt button:hover {
-    background-color: #4c74ff;
 }
 
 /* Messages */
@@ -115,6 +81,40 @@ header a:not(h1 a) {
     background-color: lightgray;
 }
 
+/* Prompt */
+#prompt {
+    margin: 0 auto;
+    padding: .6rem;
+    width: 50vw;
+    display: flex;
+    
+    border: 1px solid lightgray;
+    border-radius: 2rem;
+}
+#prompt input {
+    padding-left: .25rem;
+    flex: 3;
+    border: none;
+}
+#prompt input:focus {
+    outline: none;
+}
+#prompt input:focus::placeholder {
+    color: transparent;
+}
+#prompt button {
+    padding: .35rem;
+    flex: 1;
+    border: none;
+    border-radius: 1rem;
+    background-color: #1f51ff;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+}
+#prompt button:hover {
+    background-color: #4c74ff;
+}
+
 /* Chatting */
 .chatting header {
     position: static;
@@ -134,9 +134,13 @@ header a:not(h1 a) {
 
 /* Mobile */
 @media (max-width: 600px) {
-    header { padding: 1rem; gap: .75rem; }
-    header #logo { font-size: 1.5rem; }
+    header { margin: 0 auto; padding: 1rem; gap: .75rem; max-width: 60vw; }
+    header #logo { font-size: 1.5rem; margin-right: auto; }
     header a:not(h1 a) { font-size: 1rem; }
-    #chatbot { padding: 1rem; }
-    .user-message { max-width: 85%; }
+    header a:last-of-type { margin-right: auto; }
+    #chatbot { margin: 0 auto; padding: 1rem; min-width: 90vw; max-width: 90vw; }
+    #init-msg { margin: 0 auto; font-size: .75rem; }
+    .user-message { max-width: 75%; }
+    #prompt { margin: 0 auto; display: flex; max-width: 80vw; overflow: hidden; }
+    #chat-btn { display: none; }
 }
