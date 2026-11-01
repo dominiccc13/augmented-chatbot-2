@@ -14,30 +14,26 @@ html, body {
 /* Header */
 header {
     padding: 2.5rem 7.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 3rem;
+    justify-content: right;
+    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+}
+header #logo { 
+    flex: 1;
+    font-size: 2.5rem; font-weight: 100; text-wrap-mode: nowrap;  
+}
+header #a-div {
     display: flex;
     gap: 1rem;
-    align-items: center;
 }
-header #logo {
-    font-size: 2.5rem;
-    font-weight: 100;
-}
-header a:first-of-type {
-    text-decoration: none;
-    color: black;
-}
-header a:nth-of-type(1) {
-    margin-left: auto;
-}
-header a:not(h1 a) {
-    font-size: 1.25rem;
-    color: black;
-    text-decoration: none;
-}
+header a { text-decoration: none; color: black; }
+header a:not(h1 a) { font-size: 1.25rem; }
 
 /* Chatbot */
 #chatbot {
@@ -85,24 +81,25 @@ header a:not(h1 a) {
 #prompt {
     margin: 0 auto;
     padding: .6rem;
-    width: 50vw;
+    max-width: 90%;
+    min-width: 60%;
     display: flex;
     
     border: 1px solid lightgray;
     border-radius: 2rem;
 }
-#prompt input {
+#prompt #chat-input {
     padding-left: .25rem;
     flex: 3;
     border: none;
 }
-#prompt input:focus {
+#prompt #chat-input:focus {
     outline: none;
 }
-#prompt input:focus::placeholder {
+#prompt #chat-input:focus::placeholder {
     color: transparent;
 }
-#prompt button {
+#prompt #chat-btn {
     padding: .35rem;
     flex: 1;
     border: none;
@@ -111,36 +108,34 @@ header a:not(h1 a) {
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
 }
-#prompt button:hover {
+#prompt #chat-btn:hover {
     background-color: #4c74ff;
 }
 
 /* Chatting */
-.chatting header {
-    position: static;
-}
+.chatting header { position: static; }
+.chatting #chatbot { justify-content: flex-start; }
+.chatting #init-msg { display: none; }
+.chatting #messages { flex: 1; }
 
-.chatting #chatbot {
-    justify-content: flex-start;
-}
-
-.chatting #init-msg {
-    display: none;
-}
-
-.chatting #messages {
-    flex: 1;
-}
-
-/* Mobile */
 @media (max-width: 600px) {
-    header { margin: 0 auto; padding: 1rem; gap: .75rem; max-width: 60vw; }
-    header #logo { font-size: 1.5rem; margin-right: auto; }
-    header a:not(h1 a) { font-size: 1rem; }
-    header a:last-of-type { margin-right: auto; }
-    #chatbot { margin: 0 auto; padding: 1rem; min-width: 90vw; max-width: 90vw; }
-    #init-msg { margin: 0 auto; font-size: .75rem; }
-    .user-message { max-width: 75%; }
-    #prompt { margin: 0 auto; display: flex; max-width: 80vw; overflow: hidden; }
-    #chat-btn { display: none; }
+    header {
+        padding: .5rem 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: right;
+    }
+    header #logo { flex-basis: 100%; }
+    header a { font-size: 2rem; }
+    #prompt { 
+        display: flex; 
+        min-width: 90%;
+        overflow: hidden; 
+    } 
+    #prompt #chat-input { flex: 2 1 66%; min-width: 66%; }
+    #prompt #chat-btn { flex: 1 2 33%; } 
+}
+
+@media (max-width: 250px) {
+    #prompt #chat-btn { display: none; }
 }
