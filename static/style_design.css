@@ -88,3 +88,20 @@ header a:not(h1 a) {
 #whitespace {
     padding: 1rem;
 }
+
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    header { padding: 1rem; gap: .75rem; }
+    header #logo { font-size: 1.5rem; }
+    header a:not(h1 a) { font-size: 1rem; }
+    .container { margin: 0 1rem 1rem 1rem; }
+    .warning-section {
+        margin: .5rem 1rem;
+        padding: 1rem 1.25rem;
+    }
+}

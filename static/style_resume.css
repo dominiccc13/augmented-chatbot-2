@@ -68,3 +68,11 @@ header a:not(h1 a) {
 #skills {
 
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+    header { padding: 1rem; gap: .75rem; }
+    header #logo { font-size: 1.5rem; }
+    header a:not(h1 a) { font-size: 1rem; }
+    .container { margin: 0 1rem 1rem 1rem; }
+}
