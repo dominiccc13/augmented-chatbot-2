@@ -71,8 +71,8 @@ def prompt(chatRequest: ChatRequest, response: Response):
             'I'm a computer science student with an interest in backend, mobile, and desktop application development. \
             I've developed full-stack web applications using Flask, FastAPI, OAuth2, JWTs, SQL Server, PostgreSQL and MongoDB, \
             including a secure password manager with client-side encryption and hashing, this RAG chatbot with vector embedding, \
-            cosine similarity, and prompt engineering (hosted on an AWS EC2 instance with Nginx), and a Magic the Gathering deck builder with an ASP.NET \
-            Web API and a Windows Forms frontend in C#.' \
+            cosine similarity, and prompt engineering (hosted on an AWS EC2 instance with Nginx), and a Magic the Gathering deck builder with a C# ASP.NET MVC \
+            backend, the Scryfall API, and an HTML/CSS/JS frontend. I've also built a C++ desktop soundboard using only the standard library and the Windows SDK.' \
             Limit your responses to 5 sentences. Don't provide follow-ups or suggestions."
     }
     context_message = {
