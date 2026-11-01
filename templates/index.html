@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="/static/style.css">
     <script src="/static/script.js" defer></script>
 </head>
-<body>
-<!-- <body class="chatting"> -->
+<body id="body">
+<body id="body" class="chatting">
     <header>
         <h1>Dominic Tech</h1>
         <a href="/">Home</a>
@@ -21,10 +21,23 @@
             <h2>Ask me something!</h2>
             <h2>Try tech skills, hobbies, or experience.</h2>
         </div>
-        <div id="messages"></div>
+        <div id="messages">
+            <div class="user-message">
+                <p>
+                    Are you working? Try tech skills, hobbies, or experience. The quick brown fox jumped over the lazy dog. 
+                    Here is some more lorem ipsum text. Here is eve more of that werird texttt.
+                </p>
+            </div>
+            <div class="user-message">
+                <p>This is a short message.</p>
+            </div>
+            <div class="bot-message">
+                <p>Yes, I am working. I've built a rag chatbot, etc.</p>
+            </div>
+        </div>
         <div id="prompt">
-            <input type="text" placeholder="Ask me something (tech skills, hobbies)">
-            <button>Send</button>
+            <input id="chat-input" type="text" placeholder="Ask me something (tech skills, hobbies)">
+            <button id="chat-btn">Send</button>
         </div>
     </div>
 </body>

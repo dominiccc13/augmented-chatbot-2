@@ -1,5 +1,5 @@
 const messages = document.getElementById('messages');
-let displayUpdated = false;
+let initMsg = false;
 const chatHistoryGlobal = [];
 let thinkingState = false;
 
@@ -22,6 +22,10 @@ async function thinking() {
 async function chat(promptValue, chatHistory) {
     thinkingState = true;
     thinking();
+    if (!initMsg) {
+        initMsg = true;
+        document.body.className = 'chatting';
+    }
 
     const response = await fetch('/prompt', {
         method: 'POST',
@@ -55,9 +59,7 @@ async function chat(promptValue, chatHistory) {
 
     return {response: fullText};
 }
-document.getElementById('chat-button').addEventListener('click', async () => {
-    document.getElementById('sidebar-toggle').checked = true;
-    
+document.getElementById('chat-btn').addEventListener('click', async () => {
     const prompt = document.getElementById('chat-input').value;
     document.getElementById('chat-input').value = '';
     document.getElementById('chat-input').disabled = true;
@@ -80,7 +82,6 @@ document.getElementById('chat-button').addEventListener('click', async () => {
 document.getElementById('chat-input').addEventListener('keydown', async (e) => {
     if (e.key == 'Enter' && !document.getElementById('chat-input').disabled) {
         e.preventDefault();
-        document.getElementById('sidebar-toggle').checked = true;
         const prompt = document.getElementById('chat-input').value;
         document.getElementById('chat-input').value = '';
         document.getElementById('chat-input').disabled = true;
