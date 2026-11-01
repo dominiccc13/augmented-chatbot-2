@@ -91,6 +91,10 @@ header a:first-of-type {
     border-radius: 1rem;
     background-color: #1f51ff;
     color: white;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+}
+#prompt button:hover {
+    background-color: #4c74ff;
 }
 
 /* Messages */
